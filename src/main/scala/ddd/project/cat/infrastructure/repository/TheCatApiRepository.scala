@@ -1,23 +1,27 @@
 package main.scala.ddd.project.cat.infrastructure.repository
 
-import akka.actor.typed.ActorSystem
-import akka.actor.typed.scaladsl.Behaviors
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{HttpMethods, HttpRequest}
+import akka.http.scaladsl.model.{HttpMethods, HttpRequest, StatusCodes}
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import main.scala.ddd.project.cat.domain.{Cat, CatBreed, CatRepository}
 import main.scala.ddd.project.cat.infrastructure.marshaller._
+import akka.actor.ClassicActorSystemProvider
+import scala.concurrent.{ExecutionContext, Future}
+import java.io.IOException
 
-import scala.concurrent.{ExecutionContextExecutor, Future}
+class TheCatApiRepository(implicit executionContext: ExecutionContext, system: ClassicActorSystemProvider) extends CatRepository with CatMarshaller {
+  private val apiURL = "https://api.thecatapi.com/v1"
 
-class TheCatApiRepository extends CatRepository with CatMarshaller {
-  implicit val system: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "my-system")
-  implicit val executionContext: ExecutionContextExecutor = system.executionContext
-
-  override def searchCatsByBreed(catBreed: CatBreed): Future[Cat] = {
+  override def searchCatsByBreed(catBreed: CatBreed): Future[Option[Cat]] = {
     Http().singleRequest(HttpRequest(
       method = HttpMethods.GET,
-      uri = "https://api.thecatapi.com/v1/breeds/search?q="+catBreed.value
-    )).flatMap(Unmarshal(_).to[List[Cat]]).map(_.head)
+      uri = apiURL + "/breeds/search?q=" + catBreed.value
+    )).flatMap(response =>
+      response.status match {
+        case StatusCodes.OK =>
+          Unmarshal(response).to[List[Cat]].map(_.headOption)
+        case _ => Future.failed(new IOException(s"Request failed with status ${response.status} and error ${response.entity}"))
+      })
   }
+
 }
