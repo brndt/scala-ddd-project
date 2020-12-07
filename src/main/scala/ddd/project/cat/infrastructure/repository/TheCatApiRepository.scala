@@ -20,7 +20,8 @@ class TheCatApiRepository(implicit executionContext: ExecutionContext, system: C
       response.status match {
         case StatusCodes.OK =>
           Unmarshal(response).to[List[Cat]].map(_.headOption)
-        case _ => Future.failed(new IOException(s"Request failed with status ${response.status} and error ${response.entity}"))
+        case _ =>
+          throw new RuntimeException(s"Request failed with status ${response.status} and error ${response.entity}")
       })
   }
 
