@@ -35,12 +35,18 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
   "com.typesafe.akka" %% "akka-slf4j" % AkkaVersion,
   "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
-  "ch.qos.logback" % "logback-classic" % "1.2.3"
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
+  "org.scalatest" %% "scalatest" % "3.0.8" % Test,
+  "org.scalamock" %% "scalamock" % "4.4.0" % Test
 )
 
-Compile / scalaSource := baseDirectory.value / "app"
+Compile / scalaSource := baseDirectory.value / "app/main"
 
-Compile / unmanagedSourceDirectories += baseDirectory.value / "src"
+Compile / unmanagedSourceDirectories += baseDirectory.value / "src/main"
+
+Test / scalaSource := baseDirectory.value / "app/test"
+
+Test / unmanagedSourceDirectories += baseDirectory.value / "src/test"
 
 /*lazy val root = (project in file(".")).aggregate(app, cat)
 

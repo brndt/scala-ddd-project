@@ -1,9 +1,9 @@
-package main.scala.ddd.project.cat.infrastructure.dependency_injection
+package scala.ddd.project.cat.infrastructure.dependency_injection
 
 import akka.actor.ClassicActorSystemProvider
-import main.scala.ddd.project.cat.application.SearchBreedCatByBreedName
-import main.scala.ddd.project.cat.domain.CatBreedRepository
-import main.scala.ddd.project.cat.infrastructure.repository.TheCatApiBreedRepository
+import scala.ddd.project.cat.application.SearchBreedCatByBreedName
+import scala.ddd.project.cat.domain.CatBreedRepository
+import scala.ddd.project.cat.infrastructure.repository.TheCatApiBreedRepository
 
 import scala.concurrent.ExecutionContext
 

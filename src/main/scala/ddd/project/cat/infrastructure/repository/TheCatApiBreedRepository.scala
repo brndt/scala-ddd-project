@@ -1,10 +1,10 @@
-package main.scala.ddd.project.cat.infrastructure.repository
+package scala.ddd.project.cat.infrastructure.repository
 
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.{HttpMethods, HttpRequest, StatusCodes}
 import akka.http.scaladsl.unmarshalling.Unmarshal
-import main.scala.ddd.project.cat.domain.{CatBreed, CatBreedName, CatBreedRepository}
-import main.scala.ddd.project.cat.infrastructure.marshaller._
+import scala.ddd.project.cat.domain.{CatBreed, CatBreedName, CatBreedRepository}
+import scala.ddd.project.cat.infrastructure.marshaller._
 import akka.actor.ClassicActorSystemProvider
 import scala.concurrent.{ExecutionContext, Future}
 

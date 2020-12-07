@@ -1,9 +1,9 @@
-package main.scala.ddd.project.api
+package scala.ddd.project.api
 
 import akka.http.scaladsl.model.{HttpResponse, StatusCodes}
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.{ExceptionHandler, Route}
-import main.scala.ddd.project.cat.domain.exception.CatBreedNotFoundException
+import scala.ddd.project.cat.domain.exception.CatBreedNotFoundException
 
 class Routes(entryPointDependencyContainer: EntryPointDependencyContainer) {
 

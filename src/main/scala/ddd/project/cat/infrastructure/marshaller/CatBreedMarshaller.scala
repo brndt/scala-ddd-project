@@ -1,7 +1,7 @@
-package main.scala.ddd.project.cat.infrastructure.marshaller
+package scala.ddd.project.cat.infrastructure.marshaller
 
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-import main.scala.ddd.project.cat.domain.{CatBreed, CatBreedName, CatBreedDescription}
+import scala.ddd.project.cat.domain.{CatBreed, CatBreedName, CatBreedDescription}
 import spray.json.{DefaultJsonProtocol, DeserializationException, JsObject, JsString, JsValue, RootJsonFormat}
 
 trait CatBreedMarshaller extends SprayJsonSupport with DefaultJsonProtocol {

@@ -1,9 +1,9 @@
-package main.scala.ddd.project.api
+package scala.ddd.project.api
 
 import akka.actor.typed.ActorSystem
 import akka.actor.typed.scaladsl.Behaviors
 import akka.http.scaladsl.Http
-import main.scala.ddd.project.cat.infrastructure.dependency_injection.CatDependencyContainer
+import scala.ddd.project.cat.infrastructure.dependency_injection.CatDependencyContainer
 
 import scala.concurrent.ExecutionContext
 import scala.language.postfixOps

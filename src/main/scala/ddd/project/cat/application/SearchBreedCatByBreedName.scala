@@ -1,7 +1,7 @@
-package main.scala.ddd.project.cat.application
+package scala.ddd.project.cat.application
 
-import main.scala.ddd.project.cat.domain.exception.CatBreedNotFoundException
-import main.scala.ddd.project.cat.domain.{CatBreed, CatBreedName, CatBreedRepository}
+import scala.ddd.project.cat.domain.exception.CatBreedNotFoundException
+import scala.ddd.project.cat.domain.{CatBreed, CatBreedName, CatBreedRepository}
 
 import java.io.IOException
 import scala.concurrent.{ExecutionContext, Future}
