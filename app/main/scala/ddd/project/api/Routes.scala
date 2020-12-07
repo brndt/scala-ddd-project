@@ -16,8 +16,8 @@ class Routes(entryPointDependencyContainer: EntryPointDependencyContainer) {
     }
 
   private val cat = Route.seal(get {
-    path("cat") {
-      parameters("breed") { breed =>
+    path("cat_breed") {
+      parameters("name") { breed =>
         entryPointDependencyContainer.getCatByBreedController.get(breed)
       }
     }
