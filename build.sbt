@@ -37,7 +37,9 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
   "ch.qos.logback" % "logback-classic" % "1.2.3",
   "org.scalatest" %% "scalatest" % "3.0.8" % Test,
-  "org.scalamock" %% "scalamock" % "4.4.0" % Test
+  "org.scalamock" %% "scalamock" % "4.4.0" % Test,
+  "com.typesafe.akka" %% "akka-testkit" % AkkaVersion % Test,
+  "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % Test
 )
 
 Compile / scalaSource := baseDirectory.value / "app/main"
