@@ -1,4 +1,4 @@
-package scala.ddd.project.cat.domain
+package scala.ddd.project.catbreed.domain
 
 import scala.concurrent.Future
 

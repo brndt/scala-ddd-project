@@ -1,12 +1,12 @@
-package scala.ddd.project.cat.application
+package scala.ddd.project.catbreed.application
 
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{Matchers, WordSpec}
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.ddd.project.cat.domain.exception.CatBreedNotFoundException
-import scala.ddd.project.cat.domain.{CatBreed, CatBreedDescription, CatBreedName}
-import scala.ddd.project.cat.infrastructure.repository.CatBreedRepositoryMock
+import scala.ddd.project.catbreed.domain.exception.CatBreedNotFoundException
+import scala.ddd.project.catbreed.domain.{CatBreed, CatBreedDescription, CatBreedName}
+import scala.ddd.project.catbreed.infrastructure.repository.CatBreedRepositoryMock
 import scala.ddd.project.shared.infrastructure.UnitTestCase
 
 class SearchBreedCatByBreedNameShould extends UnitTestCase with CatBreedRepositoryMock {

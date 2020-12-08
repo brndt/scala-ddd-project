@@ -3,7 +3,7 @@ package scala.ddd.project.api
 import akka.actor.typed.ActorSystem
 import akka.actor.typed.scaladsl.Behaviors
 import akka.http.scaladsl.Http
-import scala.ddd.project.cat.infrastructure.dependency_injection.CatDependencyContainer
+import scala.ddd.project.catbreed.infrastructure.dependency_injection.CatDependencyContainer
 
 import scala.concurrent.ExecutionContext
 import scala.language.postfixOps

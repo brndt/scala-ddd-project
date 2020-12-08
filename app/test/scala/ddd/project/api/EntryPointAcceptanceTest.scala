@@ -9,7 +9,7 @@ import scala.concurrent.duration._
 import akka.http.scaladsl.testkit.RouteTestTimeout
 import akka.testkit.TestDuration
 
-import scala.ddd.project.cat.infrastructure.dependency_injection.CatDependencyContainer
+import scala.ddd.project.catbreed.infrastructure.dependency_injection.CatDependencyContainer
 
 trait EntryPointAcceptanceTest extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
   implicit val timeout: RouteTestTimeout = RouteTestTimeout(5.seconds.dilated)

@@ -1,10 +1,10 @@
-package scala.ddd.project.cat.infrastructure.repository
+package scala.ddd.project.catbreed.infrastructure.repository
 
 import org.scalamock.scalatest.MockFactory
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
-import scala.ddd.project.cat.domain.{CatBreed, CatBreedName, CatBreedRepository}
+import scala.ddd.project.catbreed.domain.{CatBreed, CatBreedName, CatBreedRepository}
 
 trait CatBreedRepositoryMock extends MockFactory {
 

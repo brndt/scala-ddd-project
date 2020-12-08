@@ -3,7 +3,11 @@ package scala.ddd.project.api
 import akka.http.scaladsl.model.{HttpResponse, StatusCodes}
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.{ExceptionHandler, Route}
-import scala.ddd.project.cat.domain.exception.CatBreedNotFoundException
+import spray.json.JsValue
+import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
+import spray.json.DefaultJsonProtocol._
+
+import scala.ddd.project.catbreed.domain.exception.CatBreedNotFoundException
 
 class Routes(entryPointDependencyContainer: EntryPointDependencyContainer) {
 
@@ -15,13 +19,34 @@ class Routes(entryPointDependencyContainer: EntryPointDependencyContainer) {
         complete(HttpResponse(StatusCodes.InternalServerError, entity = exception.getMessage))
     }
 
-  private val cat = Route.seal(get {
-    path("cat_breed") {
-      parameters("name") { breed =>
-        entryPointDependencyContainer.getCatByBreedController.get(breed)
+  private val cat = Route.seal(
+    concat(
+      get {
+        path("cat_breed") {
+          parameters("name") { breed =>
+            entryPointDependencyContainer.getCatByBreedController.get(breed)
+          }
+        }
+      },
+      post {
+        path("cat") {
+          jsonBody { body =>
+            entryPointDependencyContainer.postCatController.post(
+              body("name").convertTo[String],
+              body("alt_names").convertTo[String],
+              body("date_of_birth").convertTo[String],
+              body("character").convertTo[String],
+              body("weight").convertTo[String],
+              body("energy_level").convertTo[String]
+            )
+          }
+        }
       }
-    }
-  })
+    )
+  )
+
+  private def jsonBody(handler: Map[String, JsValue] => Route): Route =
+    entity(as[JsValue])(json => handler(json.asJsObject.fields))
 
   val all: Route = cat
 }
