@@ -12,9 +12,9 @@ import akka.testkit.TestDuration
 import scala.ddd.project.catbreed.infrastructure.dependency_injection.CatDependencyContainer
 
 trait EntryPointAcceptanceTest extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
-
   val environment = "dev"
   implicit val timeout: RouteTestTimeout = RouteTestTimeout(30.seconds.dilated)
-  val entryPointDependencies = new EntryPointDependencyContainer(new CatDependencyContainer(environment))
+  val catDependencyContainer = new CatDependencyContainer(environment)
+  val entryPointDependencies = new EntryPointDependencyContainer(catDependencyContainer)
   val routes: Route = new Routes(entryPointDependencies).all
 }

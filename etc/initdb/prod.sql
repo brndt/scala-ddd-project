@@ -1,4 +1,8 @@
-CREATE TABLE cat (
+CREATE DATABASE IF NOT EXISTS `prod`;
+
+USE `prod`;
+
+CREATE TABLE IF NOT EXISTS cat (
   id         VARCHAR(255)        NOT NULL,
   name       VARCHAR(255)        NOT NULL,
   alt_names       VARCHAR(255)        NOT NULL,
