@@ -12,10 +12,11 @@ import scala.io.StdIn
 object Main {
   def main(args: Array[String]): Unit = {
 
+    val environment = "prod"
     implicit val system: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "my-system")
     implicit val executionContext: ExecutionContext = system.executionContext
 
-    val entryPointDependencies = new EntryPointDependencyContainer(new CatDependencyContainer())
+    val entryPointDependencies = new EntryPointDependencyContainer(new CatDependencyContainer(environment))
 
     val bindingFuture = Http().newServerAt("localhost", 8080).bind(new Routes(entryPointDependencies).all)
 

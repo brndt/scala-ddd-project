@@ -1,3 +1,5 @@
 package scala.ddd.project.cat.domain
 
-case class CatDateOfBirth(value: String)
+import java.time.LocalDate
+
+case class CatDateOfBirth(value: LocalDate)

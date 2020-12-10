@@ -39,7 +39,11 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.8" % Test,
   "org.scalamock" %% "scalamock" % "4.4.0" % Test,
   "com.typesafe.akka" %% "akka-testkit" % AkkaVersion % Test,
-  "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % Test
+  "com.typesafe.akka" %% "akka-http-testkit" % AkkaHttpVersion % Test,
+  "org.scalikejdbc" %% "scalikejdbc" % "3.5.0",
+  "org.scalikejdbc" %% "scalikejdbc-config" % "3.5.0",
+  "com.h2database" % "h2" % "1.4.200",
+  "mysql" % "mysql-connector-java" % "8.0.22"
 )
 
 Compile / scalaSource := baseDirectory.value / "app/main"
