@@ -1,8 +1,5 @@
 package scala.ddd.project.catbreed.application
 
-import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{Matchers, WordSpec}
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.ddd.project.catbreed.domain.exception.CatBreedNotFoundException
 import scala.ddd.project.catbreed.domain.{CatBreed, CatBreedDescription, CatBreedName}
