@@ -2,7 +2,7 @@ package scala.ddd.project.api
 
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.testkit.ScalatestRouteTest
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.{BeforeAndAfterEach, FeatureSpec, GivenWhenThen, Matchers, WordSpec}
 import org.scalatest.concurrent.ScalaFutures
 
 import scala.concurrent.duration._
@@ -11,7 +11,7 @@ import akka.testkit.TestDuration
 
 import scala.ddd.project.catbreed.infrastructure.dependency_injection.CatDependencyContainer
 
-trait EntryPointAcceptanceTest extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
+trait EntryPointAcceptanceTest extends FeatureSpec with GivenWhenThen with Matchers with ScalaFutures with ScalatestRouteTest with BeforeAndAfterEach {
   val environment = "dev"
   implicit val timeout: RouteTestTimeout = RouteTestTimeout(30.seconds.dilated)
   val catDependencyContainer = new CatDependencyContainer(environment)
