@@ -49,7 +49,7 @@ final class CatEntryPointsShould extends EntryPointAcceptanceTest with CatMarsha
 
       Then("the response content should be")
       request ~> routes ~> check {
-        entityAs[String] should ===(s"Cat with id ${cat.catId.value.toString} already exists")
+        entityAs[String] should ===(s"""{"code":400,"message":"Cat with id ${cat.catId.value} already exists"}""")
       }
     }
   }
