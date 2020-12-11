@@ -4,7 +4,7 @@ import java.time.LocalDate
 import java.util.UUID
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.ddd.project.cat.domain.exception.CatAlreadyExistsException
-import scala.ddd.project.cat.domain.{Cat, CatAltNames, CatCharacter, CatDateOfBirth, CatEnergyLevel, CatId, CatName, CatWeight}
+import scala.ddd.project.cat.domain.{Cat, CatAltNames, CatCharacter, CatDateOfBirth, CatEnergyLevel, CatId, CatMother, CatName, CatWeight}
 import scala.ddd.project.cat.infrastructure.repository.CatRepositoryMock
 import scala.ddd.project.shared.infrastructure.UnitTestCase
 
@@ -14,7 +14,7 @@ final class CreateCatShould extends UnitTestCase with CatRepositoryMock {
 
   "create a cat" in {
 
-    val cat = Cat(CatId(UUID.randomUUID()), CatName("random_name"), CatAltNames("random other names"), CatDateOfBirth(LocalDate.now()), CatCharacter("random character"), CatWeight(4.2), CatEnergyLevel("high"))
+    val cat = CatMother.random
 
     repositoryShouldFind(None, cat.catId)
 
@@ -25,7 +25,7 @@ final class CreateCatShould extends UnitTestCase with CatRepositoryMock {
 
   "create a cat when he/she already exists" in {
 
-    val cat = Cat(CatId(UUID.randomUUID()), CatName("random_name"), CatAltNames("random other names"), CatDateOfBirth(LocalDate.now()), CatCharacter("random character"), CatWeight(4.2), CatEnergyLevel("high"))
+    val cat = CatMother.random
 
     repositoryShouldFind(Some(cat), cat.catId)
 

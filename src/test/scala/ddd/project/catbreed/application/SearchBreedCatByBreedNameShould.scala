@@ -2,7 +2,7 @@ package scala.ddd.project.catbreed.application
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.ddd.project.catbreed.domain.exception.CatBreedNotFoundException
-import scala.ddd.project.catbreed.domain.{CatBreed, CatBreedDescription, CatBreedName}
+import scala.ddd.project.catbreed.domain.{CatBreed, CatBreedDescription, CatBreedMother, CatBreedName, CatBreedNameMother}
 import scala.ddd.project.catbreed.infrastructure.repository.CatBreedRepositoryMock
 import scala.ddd.project.shared.infrastructure.UnitTestCase
 
@@ -11,7 +11,7 @@ final class SearchBreedCatByBreedNameShould extends UnitTestCase with CatBreedRe
 
   "search a cat breed" in {
 
-    val catBreed = CatBreed(CatBreedName("bengal"), CatBreedDescription("random description"))
+    val catBreed = CatBreedMother.random
 
     repositoryShouldFind(Some(catBreed), catBreed.name)
 
@@ -20,7 +20,7 @@ final class SearchBreedCatByBreedNameShould extends UnitTestCase with CatBreedRe
 
   "search a non-existing cat breed" in {
 
-    val catBreedName = CatBreedName("non_existing")
+    val catBreedName = CatBreedNameMother.random
 
     repositoryShouldFind(None, catBreedName)
 
