@@ -1,3 +1,3 @@
 package scala.ddd.project.cat.domain
 
-case class CatCharacter(value: String)
+final case class CatCharacter(value: String)

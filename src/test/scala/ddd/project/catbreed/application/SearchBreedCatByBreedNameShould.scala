@@ -6,7 +6,7 @@ import scala.ddd.project.catbreed.domain.{CatBreed, CatBreedDescription, CatBree
 import scala.ddd.project.catbreed.infrastructure.repository.CatBreedRepositoryMock
 import scala.ddd.project.shared.infrastructure.UnitTestCase
 
-class SearchBreedCatByBreedNameShould extends UnitTestCase with CatBreedRepositoryMock {
+final class SearchBreedCatByBreedNameShould extends UnitTestCase with CatBreedRepositoryMock {
   private val search = new SearchBreedCatByBreedName(repository)
 
   "search a cat breed" in {

@@ -1,3 +1,3 @@
 package scala.ddd.project.cat.domain
 
-case class CatWeight(value: Double)
+final case class CatWeight(value: Double)

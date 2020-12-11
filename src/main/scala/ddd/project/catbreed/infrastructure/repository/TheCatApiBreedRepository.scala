@@ -8,7 +8,7 @@ import scala.ddd.project.catbreed.infrastructure.marshaller._
 import akka.actor.ClassicActorSystemProvider
 import scala.concurrent.{ExecutionContext, Future}
 
-class TheCatApiBreedRepository(implicit executionContext: ExecutionContext, system: ClassicActorSystemProvider) extends CatBreedRepository with CatBreedMarshaller {
+final class TheCatApiBreedRepository(implicit executionContext: ExecutionContext, system: ClassicActorSystemProvider) extends CatBreedRepository with CatBreedMarshaller {
   private val apiURL = "https://api.thecatapi.com/v1"
 
   override def searchCatsByBreed(catBreed: CatBreedName): Future[Option[CatBreed]] = {
