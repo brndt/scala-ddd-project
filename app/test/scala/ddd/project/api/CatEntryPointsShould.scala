@@ -4,6 +4,8 @@ import akka.http.scaladsl.marshalling.Marshal
 import akka.http.scaladsl.model._
 import scalikejdbc.scalikejdbcSQLInterpolationImplicitDef
 
+import scala.concurrent.Await
+import scala.concurrent.duration.Duration
 import scala.ddd.project.cat.domain.CatMother
 import scala.ddd.project.cat.infrastructure.marshaller.CatMarshaller
 
@@ -39,7 +41,7 @@ final class CatEntryPointsShould extends EntryPointAcceptanceTest with CatMarsha
       Given("there is a cat")
       val cat = CatMother.random
       val catEntity = Marshal(cat).to[MessageEntity].futureValue
-      Post("/cat").withEntity(catEntity) ~> routes
+      Await.ready(catDependencyContainer.mysqlCatRepository.save(cat), Duration.Inf)
 
       When("I send a POST request to a cat endpoint")
       val request = Post("/cat").withEntity(catEntity)
