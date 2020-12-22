@@ -7,7 +7,7 @@ import scala.ddd.project.cat.domain.{Cat, CatId, CatRepository}
 
 trait CatRepositoryMock extends MockFactory {
 
-  protected val repository: CatRepository = mock[CatRepository]
+  protected val repository: CatRepository[Future] = mock[CatRepository[Future]]
 
   protected def repositoryShouldFind(catOption: Option[Cat], catId: CatId): Unit =
     (repository.search _)

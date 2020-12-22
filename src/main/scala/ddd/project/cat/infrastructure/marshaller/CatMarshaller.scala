@@ -5,7 +5,7 @@ import spray.json.{DefaultJsonProtocol, DeserializationException, JsNumber, JsOb
 
 import java.time.LocalDate
 import java.util.UUID
-import scala.ddd.project.cat.domain.{Cat, CatAltNames, CatCharacter, CatDateOfBirth, CatEnergyLevel, CatId, CatName, CatWeight}
+import scala.ddd.project.cat.domain._
 
 trait CatMarshaller extends SprayJsonSupport with DefaultJsonProtocol {
 

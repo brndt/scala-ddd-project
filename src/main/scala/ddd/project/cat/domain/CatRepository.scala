@@ -1,8 +1,7 @@
 package scala.ddd.project.cat.domain
 
-import scala.concurrent.Future
+trait CatRepository[P[_]] {
+  def save(cat: Cat): P[Unit]
 
-trait CatRepository {
-  def save(cat: Cat): Future[Unit]
-  def search(catId: CatId): Future[Option[Cat]]
+  def search(catId: CatId): P[Option[Cat]]
 }

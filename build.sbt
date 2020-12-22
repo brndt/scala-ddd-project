@@ -43,7 +43,9 @@ libraryDependencies ++= Seq(
   "org.scalikejdbc" %% "scalikejdbc" % "3.5.0",
   "org.scalikejdbc" %% "scalikejdbc-config" % "3.5.0",
   "com.h2database" % "h2" % "1.4.200",
-  "mysql" % "mysql-connector-java" % "8.0.22"
+  "mysql" % "mysql-connector-java" % "8.0.22",
+  "org.typelevel" %% "cats-core" % "2.1.1",
+  "org.typelevel" %% "cats-effect" % "2.1.1",
 )
 
 Compile / scalaSource := baseDirectory.value / "app/main"

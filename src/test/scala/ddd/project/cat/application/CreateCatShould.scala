@@ -1,10 +1,10 @@
 package scala.ddd.project.cat.application
 
-import java.time.LocalDate
-import java.util.UUID
+import cats.implicits.catsStdInstancesForFuture
+
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.ddd.project.cat.domain.CatMother
 import scala.ddd.project.cat.domain.exception.CatAlreadyExistsException
-import scala.ddd.project.cat.domain.{Cat, CatAltNames, CatCharacter, CatDateOfBirth, CatEnergyLevel, CatId, CatMother, CatName, CatWeight}
 import scala.ddd.project.cat.infrastructure.repository.CatRepositoryMock
 import scala.ddd.project.shared.infrastructure.UnitTestCase
 
@@ -29,6 +29,6 @@ final class CreateCatShould extends UnitTestCase with CatRepositoryMock {
 
     repositoryShouldFind(Some(cat), cat.catId)
 
-    create.create(cat.catId.value, cat.catName.value, cat.catAltNames.value, cat.catDateOfBirth.value.toString, cat.catCharacter.value, cat.catWeight.value, cat.catEnergyLevel.value).failed.futureValue shouldBe a [CatAlreadyExistsException]
+    create.create(cat.catId.value, cat.catName.value, cat.catAltNames.value, cat.catDateOfBirth.value.toString, cat.catCharacter.value, cat.catWeight.value, cat.catEnergyLevel.value).failed.futureValue shouldBe a[CatAlreadyExistsException]
   }
 }
